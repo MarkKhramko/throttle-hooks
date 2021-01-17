@@ -4,6 +4,7 @@
 * [Usage](#usage)
   + [Throttling](#throttling)
   + [Debouncing](#debouncing)
+* [Further reading](#further-reading)
 * [License](#license)
 
 ## Installation
@@ -25,17 +26,17 @@ Package contains 2 hooks:
 
 `useThrottle(wait, leading, trailing)` returns function setter, which you can use anywhere in your component.
 ```js
-  const throttle = useThrottle(400, true, false);
-  
-  // With arrow function
-  throttle(()=>{
-    // Express yourself...
-  });
+const throttle = useThrottle(400, true, false);
 
-  // Or by invoking named function
-  throttle(expressYourself);
-  // You can also submit custom scope and arguments
-  throttle(expressYourself, scope, args);
+// With arrow function
+throttle(()=>{
+  // Express yourself...
+});
+
+// Or by invoking named function
+throttle(expressYourself);
+// You can also submit custom scope and arguments
+throttle(expressYourself, scope, args);
 ```
 
 You can use as many `useThrottle` hooks as you like. Each hook is independent.
@@ -80,17 +81,17 @@ export default function SomePage(){
 
 `useDebounce(wait, leading)` returns function setter, which you can use anywhere in your component.
 ```js
-  const debounce = useDebounce(400, true);
-  
-  // With arrow function
-  debounce(()=>{
-    // Express yourself...
-  });
+const debounce = useDebounce(400, true);
 
-  // Or by invoking named function
-  debounce(expressYourself);
-  // You can also submit custom scope and arguments
-  debounce(expressYourself, scope, args);
+// With arrow function
+debounce(()=>{
+  // Express yourself...
+});
+
+// Or by invoking named function
+debounce(expressYourself);
+// You can also submit custom scope and arguments
+debounce(expressYourself, scope, args);
 ```
 
 You can use as many `useDebounce` hooks as you like. Each hook is independent.
@@ -127,6 +128,12 @@ export default function SomePage(){
   )
 }
 ```
+
+## Further reading
+
+* [Difference between throttle and debounce](https://css-tricks.com/debouncing-throttling-explained-examples/)
+* [Debounce from the term author](http://unscriptable.com/2009/03/20/debouncing-javascript-methods/)
+
 
 ## License
 MIT. 2021-present © Mark Khramko
