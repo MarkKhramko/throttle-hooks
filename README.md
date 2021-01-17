@@ -2,8 +2,8 @@
 
 * [Installation](#installation)
 * [Usage](#usage)
-	+ [Throttling](#throttling)
-	+ [Debouncing](#debouncing)
+  + [Throttling](#throttling)
+  + [Debouncing](#debouncing)
 * [License](#license)
 
 ## Installation
@@ -19,83 +19,113 @@ Package contains 2 hooks:
 ### Throttling
 
 `useThrottle()` accepts 3 optional arguments:
-* wait - number in miliseconds. Default is `400`.
-* leading - boolean. Default is `false`;
-* trailing - boolean. Default is `false`;
+* wait - number in miliseconds. Default is `400`
+* leading - boolean. Default is `false`
+* trailing - boolean. Default is `false`
 
-`useThrottle(wait, leading, trailing)`
+`useThrottle(wait, leading, trailing)` returns function setter, which you can use anywhere in your component.
+```js
+  const throttle = useThrottle(400, true, false);
+  
+  // With arrow function
+  throttle(()=>{
+    // Express yourself...
+  });
+
+  // Or by invoking named function
+  throttle(expressYourself);
+  // You can also submit custom scope and arguments
+  throttle(expressYourself, scope, args);
+```
+
+You can use as many `useThrottle` hooks as you like. Each hook is independent.
 
 #### Component example:
-```
-	import { useState, useRef } from 'react';
-	import { useThrottle } from 'throttle-hooks';
+```js
+import { useState } from 'react';
+import { useThrottle } from 'throttle-hooks';
 
-	import Button from '#components/Button';
+import Button from '#components/Button';
 
 
-	export default function SomePage(){
-		const [numClicks, setNumClicks] = useState(0);
-		const throttle = useThrottle(1000);
+export default function SomePage(){
+  const [numClicks, setNumClicks] = useState(0);
+  const throttle = useThrottle(1000);
 
-		const _handleClick = ()=>{
-			let updatedClicks = numClicks + 1;
-			setNumClicks(updatedClicks);
+  const _handleClick = ()=>{
+    let updatedClicks = numClicks + 1;
+    setNumClicks(updatedClicks);
 
-			throttle(()=>{
-				console.log("Recevied: numClicks:", updatedClicks);
-			});
-		}
+    throttle(()=>{
+      console.log("Recevied: numClicks:", updatedClicks);
+    });
+  }
 
-		return (
-			<div>
-				<h1>Hello!</h1>
-				<p>{ numClicks }</p>
-				<Button onClick={_handleClick}>
-					Click
-				</Button>
-			</div>
-		)
-	}
+  return (
+    <div>
+      <h1>Hello!</h1>
+      <p>{ numClicks }</p>
+      <Button onClick={_handleClick}>
+        Click
+      </Button>
+    </div>
+  )
+}
 ```
 
 ### Debouncing
 `useDebounce()` accepts 2 optional arguments:
-* wait - number in miliseconds. Default is `400`.
-* leading - boolean. Default is `false`;
+* wait - number in miliseconds. Default is `400`
+* leading - boolean. Default is `false`
 
-`useDebounce(wait, leading)`
+`useDebounce(wait, leading)` returns function setter, which you can use anywhere in your component.
+```js
+  const debounce = useDebounce(400, true);
+  
+  // With arrow function
+  debounce(()=>{
+    // Express yourself...
+  });
+
+  // Or by invoking named function
+  debounce(expressYourself);
+  // You can also submit custom scope and arguments
+  debounce(expressYourself, scope, args);
+```
+
+You can use as many `useDebounce` hooks as you like. Each hook is independent.
 
 #### Component example:
-```
-	import { useState, useRef } from 'react';
-	import { useDebounce } from 'throttle-hooks';
+```js
+import { useState } from 'react';
+import { useDebounce } from 'throttle-hooks';
 
-	import Button from '#components/Button';
+import Button from '#components/Button';
 
 
-	export default function SomePage(){
-		const [numClicks, setNumClicks] = useState(0);
-		const debounce = useDebounce(1000);
+export default function SomePage(){
+  const [numClicks, setNumClicks] = useState(0);
+  const debounce = useDebounce(1000);
 
-		const _handleClick = ()=>{
-			let updatedClicks = numClicks + 1;
-			setNumClicks(updatedClicks);
+  const _handleClick = ()=>{
+    let updatedClicks = numClicks + 1;
+    setNumClicks(updatedClicks);
 
-			debounce(()=>{
-				console.log("Recevied: numClicks:", updatedClicks);
-			});
-		}
+    debounce(()=>{
+      console.log("Recevied: numClicks:", updatedClicks);
+    });
+  }
 
-		return (
-			<div>
-				<h1>Hello!</h1>
-				<p>{ numClicks }</p>
-				<Button onClick={_handleClick}>
-					Click
-				</Button>
-			</div>
-		)
-	}
+  return (
+    <div>
+      <h1>Hello!</h1>
+      <p>{ numClicks }</p>
+      <Button onClick={_handleClick}>
+        Click
+      </Button>
+    </div>
+  )
+}
 ```
 
 ## License
