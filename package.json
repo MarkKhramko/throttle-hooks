@@ -1,23 +1,22 @@
 {
-  "name": "useDebounce",
+  "name": "throttle-hooks",
   "version": "1.0.0",
-  "description": "Convenient React useDebounce hook for any function call.",
+  "description": "Convenient React useThrottle and useDebounce hooks for a clean code.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rollup -c",
-    "test": "test"
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MarkKhramko/useDebounce.git"
+    "url": "git+https://github.com/MarkKhramko/throttle-hooks.git"
   },
   "author": "Mark Khramko <markkhramko@gmail.com>",
   "license": "MIT",
   "private": false,
   "bugs": {
-    "url": "https://github.com/MarkKhramko/useDebounce/issues"
+    "url": "https://github.com/MarkKhramko/throttle-hooks/issues"
   },
-  "homepage": "https://github.com/MarkKhramko/useDebounce#readme",
+  "homepage": "https://github.com/MarkKhramko/throttle-hooks#readme",
   "peerDependencies": {
     "react": ">= 16.8.0"
   },
@@ -35,15 +34,17 @@
   "files": [
     "dist"
   ],
+  "source": [
+    "src"
+  ],
   "keywords": [
     "debounce",
     "debounce-react",
     "debounce-hook",
     "useDebounce",
-    "react",
-    "hooks",
-    "hook",
-    "react-hook",
-    "react-hooks"
+    "useThrottle",
+    "throttle-react",
+    "throttle-hook",
+    "react"
   ]
 }
