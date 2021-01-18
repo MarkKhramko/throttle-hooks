@@ -46,9 +46,6 @@ You can use as many `useThrottle` hooks as you like. Each hook is independent.
 import { useState } from 'react';
 import { useThrottle } from 'throttle-hooks';
 
-import Button from '#components/Button';
-
-
 export default function SomePage(){
   const [numClicks, setNumClicks] = useState(0);
   const throttle = useThrottle(1000);
@@ -65,10 +62,10 @@ export default function SomePage(){
   return (
     <div>
       <h1>Hello!</h1>
-      <p>{ numClicks }</p>
-      <Button onClick={_handleClick}>
+      <p>You clicked: { numClicks } times.</p>
+      <button onClick={_handleClick}>
         Click
-      </Button>
+      </button>
     </div>
   )
 }
@@ -101,9 +98,6 @@ You can use as many `useDebounce` hooks as you like. Each hook is independent.
 import { useState } from 'react';
 import { useDebounce } from 'throttle-hooks';
 
-import Button from '#components/Button';
-
-
 export default function SomePage(){
   const [numClicks, setNumClicks] = useState(0);
   const debounce = useDebounce(1000);
@@ -120,10 +114,10 @@ export default function SomePage(){
   return (
     <div>
       <h1>Hello!</h1>
-      <p>{ numClicks }</p>
-      <Button onClick={_handleClick}>
+      <p>You clicked: { numClicks } times.</p>
+      <button onClick={_handleClick}>
         Click
-      </Button>
+      </button>
     </div>
   )
 }
