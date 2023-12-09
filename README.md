@@ -1,5 +1,8 @@
 # throttle-hooks for React
 
+[![NPM version](https://img.shields.io/npm/v/throttle-hooks)](https://www.npmjs.com/package/throttle-hooks)
+[![License](https://img.shields.io/npm/l/throttle-hooks)](https://www.npmjs.com/package/throttle-hooks)
+
 * [Installation](#installation)
 * [Usage](#usage)
   + [Throttling](#throttling)
@@ -130,4 +133,7 @@ export default function SomePage(){
 
 
 ## License
-MIT. 2021-present © Mark Khramko
+[MIT](LICENSE)
+
+## Copyright
+Copyright 2021-present [Mark Khramko](https://github.com/MarkKhramko)
