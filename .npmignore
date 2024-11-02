@@ -1,0 +1,16 @@
+# Ignore development directories and files
+node_modules
+src
+.git
+.vscode
+.env
+coverage
+tests
+rollup.config.js
+tsconfig.json
+
+# Ignore log files and other unwanted files
+*.log
+
+# OS
+.DS_Store
