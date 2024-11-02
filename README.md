@@ -29,10 +29,12 @@ Package contains 2 hooks:
 
 `useThrottle(wait, leading, trailing)` returns function setter, which you can use anywhere in your component.
 ```js
+import { useThrottle } from 'throttle-hooks';
+
 const throttle = useThrottle(400, true, false);
 
 // With arrow function
-throttle(()=>{
+throttle(() => {
   // Express yourself...
 });
 
@@ -49,16 +51,16 @@ You can use as many `useThrottle` hooks as you like. Each hook is independent.
 import { useState } from 'react';
 import { useThrottle } from 'throttle-hooks';
 
-export default function SomePage(){
+export default function SomePage() {
   const [numClicks, setNumClicks] = useState(0);
   const throttle = useThrottle(1000);
 
-  const _handleClick = ()=>{
-    let updatedClicks = numClicks + 1;
+  const handleClick = () => {
+    const updatedClicks = numClicks + 1;
     setNumClicks(updatedClicks);
 
-    throttle(()=>{
-      console.log("Recevied: numClicks:", updatedClicks);
+    throttle(() => {
+      console.log('Recevied:', updatedClicks, 'clicks');
     });
   }
 
@@ -66,7 +68,7 @@ export default function SomePage(){
     <div>
       <h1>Hello!</h1>
       <p>You clicked: { numClicks } times.</p>
-      <button onClick={_handleClick}>
+      <button onClick={ handleClick }>
         Click
       </button>
     </div>
@@ -81,10 +83,12 @@ export default function SomePage(){
 
 `useDebounce(wait, leading)` returns function setter, which you can use anywhere in your component.
 ```js
+import { useDebounce } from 'throttle-hooks';
+
 const debounce = useDebounce(400, true);
 
 // With arrow function
-debounce(()=>{
+debounce(() => {
   // Express yourself...
 });
 
@@ -101,16 +105,16 @@ You can use as many `useDebounce` hooks as you like. Each hook is independent.
 import { useState } from 'react';
 import { useDebounce } from 'throttle-hooks';
 
-export default function SomePage(){
+export default function SomePage() {
   const [numClicks, setNumClicks] = useState(0);
   const debounce = useDebounce(1000);
 
-  const _handleClick = ()=>{
-    let updatedClicks = numClicks + 1;
+  const handleClick = () => {
+    const updatedClicks = numClicks + 1;
     setNumClicks(updatedClicks);
 
-    debounce(()=>{
-      console.log("Recevied: numClicks:", updatedClicks);
+    debounce(() => {
+      console.log('Recevied:', updatedClicks, 'clicks');
     });
   }
 
@@ -118,7 +122,7 @@ export default function SomePage(){
     <div>
       <h1>Hello!</h1>
       <p>You clicked: { numClicks } times.</p>
-      <button onClick={_handleClick}>
+      <button onClick={ handleClick }>
         Click
       </button>
     </div>
