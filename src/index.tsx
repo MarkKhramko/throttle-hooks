@@ -1,7 +1,8 @@
-import useThrottle from './throttle';
-import useDebounce from './debounce';
+import useDebounce from './debounce'
+import useThrottle from './throttle'
+
 
 export {
-	useThrottle,
-	useDebounce
+  useDebounce,
+  useThrottle
 }

@@ -1,39 +1,41 @@
-import { useRef } from 'react';
+import type { AnyFunction } from './types'
+import { useRef } from 'react'
 
-export default function useDebounce(wait=400, leading=false){
-	const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-	const func = useRef<Function | null>(null);
 
-	const _clearTimer = ()=>{
-		timer.current && clearTimeout(timer.current);
-		timer.current = null;
-	}
-	
-	const _setFunction = (newFunction: Function, scope: Function, args: Array<any>)=>{
+export default function useDebounce(wait=400, leading=false) {
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const func = useRef<AnyFunction | null>(null);
 
-		// Leading (Call on first)
-		if (leading === true){
-			func.current = newFunction;
+  const _clearTimer = () => {
+    timer.current && clearTimeout(timer.current);
+    timer.current = null;
+  }
+  
+  const _setFunction = (newFunction: AnyFunction, scope?: AnyFunction, args?: Array<any>) => {
 
-			// If timer not active, call.
-			if (timer.current === null)
-				func.current && func.current.apply(scope, args);
+    // Leading (Call on first)
+    if (leading === true) {
+      func.current = newFunction;
 
-			_clearTimer();
-			timer.current = setTimeout(()=>_clearTimer(), wait);
-		}
-		// Default (Call on last)
-		else{
-			_clearTimer();
+      // If timer not active, call.
+      if (timer.current === null)
+        func.current?.apply(scope, args);
 
-			func.current = newFunction;
+      _clearTimer();
+      timer.current = setTimeout(() => _clearTimer(), wait);
+    }
+    // Default (Call on last)
+    else{
+      _clearTimer();
 
-			timer.current = setTimeout(()=>{
-				func.current && func.current.apply(scope, args);
-				_clearTimer();
-			}, wait);
-		}
-	}
+      func.current = newFunction;
 
-	return _setFunction;
+      timer.current = setTimeout(() => {
+        func.current?.apply(scope, args);
+        _clearTimer();
+      }, wait);
+    }
+  }
+
+  return _setFunction;
 }
