@@ -1,10 +1,14 @@
 {
   "name": "throttle-hooks",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Convenient React useDebounce and useThrottle hooks for a clean code.",
   "type": "module",
-  "main": "build/index.cjs.js",
+  "main": "build/index.cjs",
   "module": "build/index.mjs",
+  "exports": {
+    "import": "./build/index.mjs",
+    "require": "./build/index.cjs"
+  },
   "scripts": {
     "build": "rollup -c"
   },
